@@ -1,9 +1,9 @@
 export{muveletletrehoz,muvelt}
 
 const muveletletrehoz = (jel)=>{
-    if (jel == "+") {
-        return(a,b)=>{return a+b}
-    }
+    if (jel == "+") {return(a,b)=>{return a+b}} //Összeadás
+    if (jel == "-") {return(a,b)=>{return a-b}} //Kivonás
+    if (jel == "*") {return(a,b)=>{return a*b}} //Szorzás
 }
 
 const muvelt = (n1,n2,callback)=>{
