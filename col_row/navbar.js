@@ -14,6 +14,7 @@ class NavigationBar extends ViewElement{
 
         this.div.addEventListener("change", (e) => {
             const radioButtonValue = e.target.value;
+            console.log(radioButtonValue)
             this.activate(radioButtonValue);
         });
     }
@@ -26,7 +27,7 @@ class NavigationBar extends ViewElement{
         this.#viewElementList.push(viewElement);
 
         const viewElementId = viewElement.id;
-
+        console.log(viewElement)
         const div = createRadioButton({
             id: viewElementId,
             name: this.id,

@@ -1,4 +1,5 @@
 import { FormView } from "./form.js";
+import { AuthorManager } from "./manager.js";
 import { NavigationBar } from "./navbar.js"
 import { TableView } from "./table.js";
 
@@ -29,8 +30,14 @@ const headerArray = ['Szerző', 'Mű', 'Fogalom']
 const navbar = new NavigationBar();
 navbar.appendTo(document.body);
  
+const manager = new AuthorManager();
+manager.addElement({
+    author : "aaa",
+    concept: "bbb",
+    work: "ccc"
+})
 
-const tableView = new TableView("table",headerArray);
+const tableView = new TableView("table",headerArray, manager);
 tableView.appendTo(document.body);
 navbar.addViewElement("tablazat",tableView)
 
@@ -40,11 +47,5 @@ navbar.addViewElement("form",formView);
 
 navbar.activate("table");
 
-const manager = new Manager();
-manager.addElement({
-    author : "aaa",
-    concept: "bbb",
-    work: "ccc"
-})
 
 manager.getAllElement();
