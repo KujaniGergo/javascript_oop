@@ -15,6 +15,9 @@ class ViewElement {
      */
     #activateCallback
 
+    set activateCallback(value){
+        this.#activateCallback = value
+    }
     get div(){
         return this.#div;
     }

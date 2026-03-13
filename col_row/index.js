@@ -31,17 +31,13 @@ const navbar = new NavigationBar();
 navbar.appendTo(document.body);
  
 const manager = new AuthorManager();
-manager.addElement({
-    author : "aaa",
-    concept: "bbb",
-    work: "ccc"
-})
+
 
 const tableView = new TableView("table",headerArray, manager);
 tableView.appendTo(document.body);
 navbar.addViewElement("tablazat",tableView)
 
-const formView = new FormView("Tableform");
+const formView = new FormView("Tableform",formFields,manager);
 formView.appendTo(document.body);
 navbar.addViewElement("form",formView);
 
