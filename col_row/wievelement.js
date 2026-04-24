@@ -5,52 +5,52 @@ class ViewElement {
     /**
      * @type {hmtlDivElement}
      */
-    #div;
+    #div; //pédányosításkor létrehozunk egy divet az elemekekt tároljuk el benne
     /**
      * @type {string}
      */
-    #id;
+    #id; //privát tulajdonság az osztály pédányának
     /**
      * @type  {ActivateCallback}
      */
-    #activateCallback
+    #activateCallback //akkor fut ée amikor megjelenik az elem a képernyőn
 
     set activateCallback(value){
         this.#activateCallback = value
     }
-    get div(){
-        return this.#div;
+    get div(){ //getter definiálása
+        return this.#div; //visszatér a privát div tulajdonságával
     }
 
-    get id() {
-        return this.#id
+    get id() { //getter az azonosítónak 
+        return this.#id //visszatér a privát id tulajdonságával
     }
-    constructor(id) {
-        this.#id = id;
-        this.#div = document.createElement("div");
-        this.#div.id = id;
+    constructor(id) {//konstruktor a bemeneti azonosítóval
+        this.#id = id; //azonosító beállítása
+        this.#div = document.createElement("div"); //div létrehozása, privát tulajdonság beállítása
+        this.#div.id = id; //div azonosítójának beállítása
     }
 
     /**
      * 
      * @param {htmlelemt} parent 
+     * @returns {void}
      */
-    appendTo(parent){
-        parent.appendChild(this.#div);
+    appendTo(parent){ //definiálunk egy függvényt a pédánynak a bementi param egy html ele,e
+        parent.appendChild(this.#div); //a html elemehez hozzácsatoljuk a div tulajdonságot
     }
     /**
-     * 
-     * @param {string
+     * @param {string}
      */
-    activate(id){
-        if (this.#id  === id) {
+    activate(id){ // függvényt definiálunk a példányoknak
+        if (this.#id  === id) { //összehasonlítjuk a bemeneti id paraméterét az id tulajdonsággal
             show(this.#div);
-            if (this.#activateCallback) {
-                this.#activateCallback();
+            if (this.#activateCallback) { //ha van activate callback 
+                this.#activateCallback(); //akkor mehívjuk 
             }
         }else{
-            hide(this.#div);
+            hide(this.#div); // hozzáfűzzük az elemhe a hidden css osztályt
         }
     }
 }
-export {ViewElement};
+export {ViewElement}; // exportáljuk a viewelementet

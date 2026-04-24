@@ -1,21 +1,21 @@
 import { createRadioButton } from "./gomszab.min.js";
 import { ViewElement } from "./wievelement.js";
 
-class NavigationBar extends ViewElement{
+class NavigationBar extends ViewElement{ //navigation bar
     /**
      * @type {ViewElement[]}
      */
-    #viewElementList;
+    #viewElementList; //a privát tulajdonság ami tartalmazza a megjelenítendő view element leszármazottakat
 
-    constructor(parameter) {
-        super('navbar')
+    constructor(parameter) { //konstruktor definíció
+        super('navbar') //meghívjuk a szülő osztály konstruktorát
 
         this.#viewElementList = [];
 
-        this.div.addEventListener("change", (e) => {
-            const radioButtonValue = e.target.value;
-            console.log(radioButtonValue)
-            this.activate(radioButtonValue);
+        this.div.addEventListener("change", (e) => { //feliratkozunk a div change eseményére
+            const radioButtonValue = e.target.value; //elkérjük a target value értékét
+            console.log(radioButtonValue) //meghívjuk az activate függvényt 
+            this.activate(radioButtonValue); //
         });
     }
 
@@ -23,7 +23,7 @@ class NavigationBar extends ViewElement{
      * @param {string} label
      * @param {ViewElement} viewElement
      */
-    addViewElement(label, viewElement) {
+    addViewElement(label, viewElement) { //
         this.#viewElementList.push(viewElement);
 
         const viewElementId = viewElement.id;
@@ -42,10 +42,10 @@ class NavigationBar extends ViewElement{
      */
     activate(value) {
         for (const viewElement of this.#viewElementList) {
-            viewElement.activate(value);
+            viewElement.activate(value); //
         }
 
-        const radio = this.div.querySelector(`#${value}`);
+        const radio = this.div.querySelector(`#${value}`); // a diven belül lekérjük a megeggyező id eleneü
         if (radio) {
             radio.checked = true;
         }
